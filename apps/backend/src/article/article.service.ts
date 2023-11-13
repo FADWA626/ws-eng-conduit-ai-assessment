@@ -177,3 +177,27 @@ export class ArticleService {
     return this.articleRepository.nativeDelete({ slug });
   }
 }
+// article-edit.component.ts
+
+export class ArticleEditComponent implements OnInit {
+  article: Article;
+  coAuthors: string = '';
+
+  // ... existing code
+
+  saveArticle() {
+    // Update the article object with the co-authors before saving
+    this.article.coAuthors = this.coAuthors.split(',').map(author => author.trim());
+
+    // Call the method to save the article
+    this.articleService.saveArticle(this.article);
+  }
+}
+<!-- article-edit.component.html -->
+
+<!-- ... existing HTML -->
+
+<div>
+  <label for="coAuthors">Co-Authors:</label>
+  <input type="text" id="coAuthors" [(ngModel)]="coAuthors" />
+</div>
