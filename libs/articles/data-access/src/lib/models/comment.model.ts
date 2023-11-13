@@ -14,3 +14,8 @@ export interface Comment {
   createdAt: string;
   author: Profile;
 }
+
+export class Article {
+  // ... existing properties
+  coAuthors: string[] = [];
+}
